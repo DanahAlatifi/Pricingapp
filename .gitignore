@@ -1,0 +1,18 @@
+# أسرار — لا تُرفع أبداً
+**/.env
+*.env
+
+# مكتبات (تُثبّت من package.json)
+node_modules/
+**/node_modules/
+
+# ملفات Expo وEAS المؤقتة
+.expo/
+**/.expo/
+dist/
+web-build/
+
+# نظام
+.DS_Store
+*.log
+npm-debug.*
