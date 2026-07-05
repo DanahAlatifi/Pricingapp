@@ -5,11 +5,22 @@
 // ───────────────────────────────────────────────────────────────
 const xmlrpc = require('xmlrpc');
 
+// function normalizeUrl(url) {
+//   if (!url || typeof url !== 'string') return null;
+//   const clean = url.trim().replace(/\/+$/, '');
+//   if (!/^https?:\/\//i.test(clean)) return null;
+//   return clean;
+// }
 function normalizeUrl(url) {
   if (!url || typeof url !== 'string') return null;
-  const clean = url.trim().replace(/\/+$/, '');
+  let clean = url.trim();
   if (!/^https?:\/\//i.test(clean)) return null;
-  return clean;
+  try {
+    const u = new URL(clean);
+    return u.origin;
+  } catch {
+    return clean.replace(/\/+$/, '');
+  }
 }
 
 // ⚠️ أمان (SSRF): السيرفر يتصل بأي رابط يدخله المستخدم. لاستخدام داخلي مقبول.
