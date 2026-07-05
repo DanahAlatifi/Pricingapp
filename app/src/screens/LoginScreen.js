@@ -11,7 +11,6 @@ import { colors, radius, FONT } from '../theme';
 export default function LoginScreen() {
   const { login } = useAuth();
   const [url, setUrl] = useState('');
-  const [db, setDb] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -19,21 +18,18 @@ export default function LoginScreen() {
   useEffect(() => {
     (async () => {
       const conn = await getConn();
-      if (conn) {
-        if (conn.url) setUrl(conn.url);
-        if (conn.db) setDb(conn.db);
-      }
+      if (conn && conn.url) setUrl(conn.url);
     })();
   }, []);
 
   async function onSubmit() {
-    if (!url || !db || !email || !password) {
+    if (!url || !email || !password) {
       Alert.alert('تنبيه', 'عبّئ كل الحقول');
       return;
     }
     setLoading(true);
     try {
-      await login(url.trim(), db.trim(), email.trim(), password);
+      await login(url.trim(), '', email.trim(), password);
     } catch (e) {
       Alert.alert('فشل الدخول', e.message);
     } finally {
@@ -45,7 +41,7 @@ export default function LoginScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingHorizontal: 26, paddingVertical: 30 }}>
-          <View style={{ alignItems: 'center', marginBottom: 30 }}>
+          <View style={{ alignItems: 'center', marginBottom: 34 }}>
             <View style={{ width: 62, height: 62, borderRadius: radius.tile, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center', marginBottom: 18 }}>
               <View style={{ width: 22, height: 22, borderRadius: 7, borderWidth: 2.5, borderColor: '#fff' }} />
             </View>
@@ -54,10 +50,7 @@ export default function LoginScreen() {
           </View>
 
           <Field label="رابط أودو">
-            <TextInput value={url} onChangeText={setUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="http://192.168.1.119:8080" placeholderTextColor={colors.muted} style={inputStyle} />
-          </Field>
-          <Field label="قاعدة البيانات">
-            <TextInput value={db} onChangeText={setDb} autoCapitalize="none" autoCorrect={false} placeholder="testluxury" placeholderTextColor={colors.muted} style={inputStyle} />
+            <TextInput value={url} onChangeText={setUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="https://dana71.odoo.com" placeholderTextColor={colors.muted} style={inputStyle} />
           </Field>
           <Field label="البريد الإلكتروني">
             <TextInput value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoCorrect={false} placeholder="you@company.com" placeholderTextColor={colors.muted} style={inputStyle} />
@@ -69,6 +62,8 @@ export default function LoginScreen() {
           <TouchableOpacity onPress={onSubmit} disabled={loading} style={{ height: 52, borderRadius: radius.field, backgroundColor: colors.ink, alignItems: 'center', justifyContent: 'center', marginTop: 22, opacity: loading ? 0.7 : 1 }}>
             {loading ? <ActivityIndicator color="#fff" /> : <Text style={{ fontFamily: FONT, color: '#fff', fontSize: 16, fontWeight: '700' }}>تسجيل الدخول</Text>}
           </TouchableOpacity>
+
+          <Text style={{ fontFamily: FONT, fontSize: 11, color: colors.muted, textAlign: 'center', marginTop: 14 }}>قاعدة البيانات تُكتشف تلقائياً من الرابط</Text>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
