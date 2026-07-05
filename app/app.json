@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "تسعير",
+    "slug": "taseer",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#18181B"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.taseer.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.taseer.app"
+    },
+    "extra": {
+      "apiBaseUrl": "http://192.168.1.10:3000",
+      "eas": {
+        "projectId": "346ea9a4-4a5d-4a4f-81cf-80c3092aab31"
+      }
+    }
+  }
+}
