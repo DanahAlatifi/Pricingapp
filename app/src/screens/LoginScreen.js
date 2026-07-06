@@ -50,7 +50,7 @@ export default function LoginScreen() {
           </View>
 
           <Field label="رابط أودو">
-            <TextInput value={url} onChangeText={setUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="https://dana71.odoo.com" placeholderTextColor={colors.muted} style={inputStyle} />
+            <TextInput value={url} onChangeText={setUrl} autoCapitalize="none" autoCorrect={false} keyboardType="url" placeholder="https://odoo.odoo.com" placeholderTextColor={colors.muted} style={inputStyle} />
           </Field>
           <Field label="البريد الإلكتروني">
             <TextInput value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" autoCorrect={false} placeholder="you@company.com" placeholderTextColor={colors.muted} style={inputStyle} />

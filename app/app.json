@@ -6,27 +6,26 @@
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "icon": "./assets/icon.png",
     "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
       "backgroundColor": "#18181B"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.taseer.app",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
-      }
+      "bundleIdentifier": "com.taseer.app"
     },
     "android": {
-      "package": "com.taseer.app"
+      "package": "com.taseer.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#18181B"
+      }
     },
     "extra": {
-      "apiBaseUrl": "https://pricingapp-production-e0b1.up.railway.app",
-      "eas": {
-        "projectId": "346ea9a4-4a5d-4a4f-81cf-80c3092aab31"
-      }
+      "apiBaseUrl": "https://pricingapp-production-e0b1.up.railway.app"
     }
   }
 }
