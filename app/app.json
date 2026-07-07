@@ -12,10 +12,15 @@
       "resizeMode": "contain",
       "backgroundColor": "#18181B"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.taseer.app"
+      "bundleIdentifier": "com.taseer.app",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.taseer.app",
@@ -25,7 +30,10 @@
       }
     },
     "extra": {
-      "apiBaseUrl": "https://pricingapp-production-e0b1.up.railway.app"
+      "apiBaseUrl": "https://pricingapp-production-e0b1.up.railway.app",
+      "eas": {
+        "projectId": "346ea9a4-4a5d-4a4f-81cf-80c3092aab31"
+      }
     }
   }
 }
